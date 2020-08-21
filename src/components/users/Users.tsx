@@ -1,19 +1,23 @@
 import React, {Component} from "react";
 import {Server} from "miragejs";
 
-export interface User {
+interface IUser {
     name: string;
     surname: string;
 }
 
-interface UserJson {
+interface IUserJson {
     name: string
     surname: string
 }
 
+interface IUsers {
+    users: IUser[];
+}
+
 export class Users extends Component {
 
-    state = {
+    state: IUsers = {
         users: [{
             name: '',
             surname: ''
@@ -21,12 +25,11 @@ export class Users extends Component {
     };
 
     componentDidMount(): void {
-
         this.mirageJsServer();
-        this.retrieveUsersPromise();
+        this.fetchUsers();
     }
 
-    private retrieveUsersPromise(): void {
+    private fetchUsers(): void {
         fetch('/api/users')
             .then(response => response.json())
             .then((response) => Users.mapToUser(response))
@@ -34,14 +37,25 @@ export class Users extends Component {
             .catch(error => console.error('Failed to retrieve users: ', error));
     }
 
-    private static mapToUser(users: UserJson[]): User[] {
-        return users.map(user => {
-            return {
+    private static mapToUser = (users: IUserJson[]): IUser[] => users
+        .map(user => ({
                 name: user.name,
                 surname: user.surname
-            }
-        })
-    }
+            })
+        );
+
+    private static mockedUsers = (): IUserJson[] => [
+        {
+            name: 'Artemas',
+            surname: 'Muza'
+        }, {
+            name: 'LeBron',
+            surname: 'James'
+        }, {
+            name: 'Lara',
+            surname: 'Croft'
+        }
+    ];
 
     mirageJsServer(): Server {
         return new Server({
@@ -49,17 +63,7 @@ export class Users extends Component {
                 this.namespace = 'api';
 
                 this.get('/users', () => {
-                    return [
-                        {
-                            name: 'Artemas',
-                            surname: 'Muza'
-                        }, {
-                            name: 'LeBron',
-                            surname: 'James'
-                        }, {
-                            name: 'Lara',
-                            surname: 'Croft'
-                        }]
+                    return Users.mockedUsers();
                 });
             },
         });
