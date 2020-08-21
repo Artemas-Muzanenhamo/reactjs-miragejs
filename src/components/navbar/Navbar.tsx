@@ -5,12 +5,6 @@ interface Props {
 }
 
 export class Navbar extends React.Component<Props> {
-
-
-    constructor(props: Readonly<Props>) {
-        super(props);
-    }
-
     render(): React.ReactElement {
         return <div className="uk-navbar-container uk-navbar">
             <div className="uk-navbar-center">

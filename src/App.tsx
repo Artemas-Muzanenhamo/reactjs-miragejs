@@ -7,7 +7,7 @@ export default class App extends Component {
     render(): React.ReactElement {
         return (
             <div className="App">
-                <Navbar title="Users Info" />
+                <Navbar title="Users Infomation" />
                 <Users />
             </div>
         );
