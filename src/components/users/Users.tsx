@@ -23,7 +23,10 @@ export class Users extends Component {
     componentDidMount(): void {
 
         this.mirageJsServer();
+        this.retrieveUsersPromise();
+    }
 
+    private retrieveUsersPromise(): void {
         fetch('/api/users')
             .then(response => response.json())
             .then((response) => Users.mapToUser(response))
