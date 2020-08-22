@@ -6,13 +6,7 @@ interface IUser {
 }
 
 export class User extends Component<IUser> {
-
-
-    constructor(props: IUser) {
-        super(props);
-    }
-
-    render(): ReactElement {
+    render(): ReactElement<IUser> {
         return <div>
             <div className="uk-card uk-card-primary uk-card-body">
                 <h3 className="uk-card-title">{this.props.name} {this.props.surname}</h3>
