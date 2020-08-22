@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {User} from "./user/User";
+import {User} from "../user/User";
 import {MirageJsServer} from "../../mirageJsServer";
 
 interface IUser {
