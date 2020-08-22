@@ -37,6 +37,7 @@
     ]
   },
   "devDependencies": {
-    "miragejs": "^0.1.40"
+    "miragejs": "^0.1.40",
+    "react-test-renderer": "^16.13.1"
   }
 }
