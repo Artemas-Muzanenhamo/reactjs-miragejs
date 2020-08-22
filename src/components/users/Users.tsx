@@ -1,13 +1,13 @@
 import React, {Component} from "react";
-import {Server} from "miragejs";
 import {User} from "./user/User";
+import {MirageJsServer} from "../../MirageJsServer";
 
 interface IUser {
     name: string;
     surname: string;
 }
 
-interface IUserJson {
+export interface IUserJson {
     name: string
     surname: string
 }
@@ -26,7 +26,7 @@ export class Users extends Component {
     };
 
     componentDidMount(): void {
-        this.mirageJsServer();
+        MirageJsServer.mirageJsServer();
         this.fetchUsers();
     }
 
@@ -44,31 +44,6 @@ export class Users extends Component {
                 surname: user.surname
             })
         );
-
-    private static mockedUsers = (): IUserJson[] => [
-        {
-            name: 'Artemas',
-            surname: 'Muza'
-        }, {
-            name: 'LeBron',
-            surname: 'James'
-        }, {
-            name: 'Lara',
-            surname: 'Croft'
-        }
-    ];
-
-    mirageJsServer(): Server {
-        return new Server({
-            routes(): void {
-                this.namespace = 'api';
-
-                this.get('/users', () => {
-                    return Users.mockedUsers();
-                });
-            },
-        });
-    }
 
     render(): React.ReactElement {
         return <div className="uk-child-width-1-3@m uk-grid-small uk-grid-match uk-grid">
