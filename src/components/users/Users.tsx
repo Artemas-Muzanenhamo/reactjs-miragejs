@@ -26,19 +26,19 @@ export class Users extends Component {
         }]
     };
 
-    componentDidMount(): void {
-        MirageJsServer.mirageJsServer();
-        UsersApi.fetchUsers()
-            .then((usersJson) => Users.mapToUser(usersJson))
-            .then(users => this.setState({users}));
-    }
-
-    private static mapToUser = (users: IUserJson[]): IUser[] => users
+    private mapToUser = (users: IUserJson[]): IUser[] => users
         .map(user => ({
                 name: user.name,
                 surname: user.surname
             })
         );
+
+    componentDidMount(): void {
+        MirageJsServer.mirageJsServer();
+        UsersApi.fetchUsers()
+            .then(this.mapToUser)
+            .then(users => this.setState({users}));
+    }
 
     render(): React.ReactElement {
         return <div className="uk-child-width-1-3@m uk-grid-small uk-grid-match uk-grid">

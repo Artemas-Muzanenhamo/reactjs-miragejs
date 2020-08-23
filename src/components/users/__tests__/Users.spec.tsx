@@ -1,8 +1,8 @@
 import {shallow} from "enzyme";
 import {User} from "../../user/User";
 import React from "react";
-import {IUserJson, Users} from "../Users";
-import {UsersApi} from "../../../api/users/UsersApi";
+import {Users} from "../Users";
+import renderer from 'react-test-renderer';
 
 describe('<Users />', () => {
     it('renders <User /> component', () => {
@@ -10,36 +10,11 @@ describe('<Users />', () => {
         expect(wrapper.find(User)).toHaveLength(1);
     });
 
-    function testUsersJson(): IUserJson[] {
-        return [
-            {
-                name: 'Dummy',
-                surname: 'Test'
-            },
-            {
-                name: 'Hello',
-                surname: 'World'
-            }
-        ];
-    }
-
-    function mockSuccessFetchPromise(users = testUsersJson()) {
-        return Promise.resolve({
-            json: () => Promise.resolve(users),
-            status: 200
-        });
-    }
-
     it('renders fetched Users', () => {
-        jest.spyOn(global, 'fetch').mockImplementation(() => mockSuccessFetchPromise() as Promise<Response>);
+        let tree = renderer.create(
+            <User name="Arty" surname="Prime" />
+        ).toJSON();
 
-        UsersApi.fetchUsers()
-            .then(
-                users => {
-                    expect(fetch).toHaveBeenCalledWith('/api/users');
-                    expect(users.length).toEqual(2);
-                    expect(users).toEqual(testUsersJson())
-                }
-            );
+        expect(tree).toMatchSnapshot();
     });
 });

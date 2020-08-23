@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Users /> renders fetched Users 1`] = `
+<div>
+  <div
+    className="uk-card uk-card-primary uk-card-body"
+  >
+    <h3
+      className="uk-card-title"
+    >
+      Arty
+       
+      Prime
+    </h3>
+    <p>
+      This is a profile card for 
+      Arty
+    </p>
+  </div>
+</div>
+`;
