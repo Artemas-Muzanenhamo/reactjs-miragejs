@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<User /> component renders <User /> component 1`] = `
+<div>
+  <div
+    className="uk-card uk-card-primary uk-card-body"
+  >
+    <h3
+      className="uk-card-title"
+    >
+      Jane
+       
+      Doe
+    </h3>
+    <p>
+      This is a profile card for 
+      Jane
+    </p>
+  </div>
+</div>
+`;
