@@ -2,7 +2,7 @@ import {shallow} from "enzyme";
 import {User} from "../../user/User";
 import React from "react";
 import {IUserJson, Users} from "../Users";
-import renderer from 'react-test-renderer';
+import {UsersApi} from "../../../api/users/UsersApi";
 
 describe('<Users />', () => {
     it('renders <User /> component', () => {
@@ -33,10 +33,13 @@ describe('<Users />', () => {
     it('renders fetched Users', () => {
         jest.spyOn(global, 'fetch').mockImplementation(() => mockSuccessFetchPromise() as Promise<Response>);
 
-        let tree = renderer.create(
-            <Users/>
-        ).toJSON();
-
-        expect(tree).toMatchSnapshot();
+        UsersApi.fetchUsers()
+            .then(
+                users => {
+                    expect(fetch).toHaveBeenCalledWith('/api/users');
+                    expect(users.length).toEqual(2);
+                    expect(users).toEqual(testUsersJson())
+                }
+            );
     });
 });

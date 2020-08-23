@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {User} from "../user/User";
 import {MirageJsServer} from "../../mirageJsServer";
+import {UsersApi} from "../../api/users/UsersApi";
 
 interface IUser {
     name: string;
@@ -27,15 +28,9 @@ export class Users extends Component {
 
     componentDidMount(): void {
         MirageJsServer.mirageJsServer();
-        this.fetchUsers();
-    }
-
-    private fetchUsers(): void {
-        fetch('/api/users')
-            .then(response => response.json())
-            .then((response) => Users.mapToUser(response))
-            .then(users => this.setState({users}))
-            .catch(error => console.error('Failed to retrieve users: ', error));
+        UsersApi.fetchUsers()
+            .then((usersJson) => Users.mapToUser(usersJson))
+            .then(users => this.setState({users}));
     }
 
     private static mapToUser = (users: IUserJson[]): IUser[] => users
