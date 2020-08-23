@@ -2,20 +2,56 @@
 
 exports[`<Users /> renders fetched Users 1`] = `
 <div>
-  <div
-    className="uk-card uk-card-primary uk-card-body"
-  >
-    <h3
-      className="uk-card-title"
+  <div>
+    <div
+      className="uk-card uk-card-primary uk-card-body"
     >
-      Arty
-       
-      Prime
-    </h3>
-    <p>
-      This is a profile card for 
-      Arty
-    </p>
+      <h3
+        className="uk-card-title"
+      >
+        Don
+         
+        Morretti
+      </h3>
+      <p>
+        This is a profile card for 
+        Don
+      </p>
+    </div>
+  </div>
+  <div>
+    <div
+      className="uk-card uk-card-primary uk-card-body"
+    >
+      <h3
+        className="uk-card-title"
+      >
+        Sarah
+         
+        Vaughn
+      </h3>
+      <p>
+        This is a profile card for 
+        Sarah
+      </p>
+    </div>
+  </div>
+  <div>
+    <div
+      className="uk-card uk-card-primary uk-card-body"
+    >
+      <h3
+        className="uk-card-title"
+      >
+        Steve
+         
+        Smith
+      </h3>
+      <p>
+        This is a profile card for 
+        Steve
+      </p>
+    </div>
   </div>
 </div>
 `;
