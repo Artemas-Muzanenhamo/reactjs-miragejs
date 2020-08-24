@@ -10,6 +10,8 @@ export default class App extends Component {
         return (
             <div className="App">
                 <Navbar title={this.navbarTitle} />
+                <hr className="uk-divider-icon"/>
+                <hr className="uk-divider-icon"/>
                 <Users />
             </div>
         );
