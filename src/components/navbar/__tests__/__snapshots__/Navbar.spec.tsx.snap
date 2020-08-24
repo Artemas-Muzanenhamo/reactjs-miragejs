@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navbar/> component renderes <Navbar/> component with title 1`] = `
+<div
+  className="uk-navbar-container uk-navbar"
+>
+  <div
+    className="uk-navbar-center"
+  >
+    <a
+      className="uk-navbar-item uk-logo"
+      href="/"
+    >
+      My Navbar title
+    </a>
+  </div>
+</div>
+`;
