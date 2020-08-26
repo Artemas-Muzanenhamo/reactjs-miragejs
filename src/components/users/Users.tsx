@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {GetUser} from "../user/GetUser";
+import {GetUser} from "../user/get_user/GetUser";
 import {MirageJsServer} from "../../mirageJsServer";
 import {UsersApi} from "../../api/users/UsersApi";
 

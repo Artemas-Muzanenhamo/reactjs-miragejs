@@ -1,5 +1,5 @@
 import {shallow} from "enzyme";
-import {GetUser} from "../../user/GetUser";
+import {GetUser} from "../../user/get_user/GetUser";
 import React from "react";
 import {Users} from "../Users";
 import renderer from 'react-test-renderer';
