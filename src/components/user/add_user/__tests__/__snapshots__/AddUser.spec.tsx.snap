@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddUser /> component should render <AddUser /> component 1`] = `
+<div>
+  <form>
+    <fieldset
+      className="uk-fieldset"
+    >
+      <legend
+        className="uk-legend"
+      >
+        Add A User
+      </legend>
+      <div
+        className="uk-margin"
+      >
+        <input
+          className="uk-input uk-form-width-large"
+          placeholder="First Name"
+          type="text"
+        />
+      </div>
+      <div
+        className="uk-margin"
+      >
+        <input
+          className="uk-input uk-form-width-large"
+          placeholder="Surname"
+          type="text"
+        />
+      </div>
+      <div>
+        <input
+          className="uk-button uk-button-default"
+          type="button"
+          value="Add User"
+        />
+      </div>
+    </fieldset>
+  </form>
+</div>
+`;
