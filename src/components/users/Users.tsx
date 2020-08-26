@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {User} from "../user/User";
+import {GetUser} from "../user/GetUser";
 import {MirageJsServer} from "../../mirageJsServer";
 import {UsersApi} from "../../api/users/UsersApi";
 
@@ -44,7 +44,7 @@ export class Users extends Component {
         return <div className="uk-child-width-1-3@m uk-grid-small uk-grid-match uk-grid">
             {this.state.users
                 .map(user =>
-                    <User key={user.name} name={user.name} surname={user.surname}/>
+                    <GetUser key={user.name} name={user.name} surname={user.surname}/>
                 )}
         </div>
     }

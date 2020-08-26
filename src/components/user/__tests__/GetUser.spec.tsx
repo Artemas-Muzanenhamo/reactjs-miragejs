@@ -1,11 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {User} from "../User";
+import {GetUser} from "../GetUser";
 
-describe('<User /> component', () => {
-    it('renders <User /> component', () => {
+describe('<GetUser /> component', () => {
+    it('renders <GetUser /> component', () => {
         let userComponentAsJson = renderer.create(
-            <User name="Jane" surname="Doe"/>
+            <GetUser name="Jane" surname="Doe"/>
         ).toJSON();
 
         expect(userComponentAsJson).toMatchSnapshot();

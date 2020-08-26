@@ -5,7 +5,7 @@ interface IUser {
     surname: string;
 }
 
-export class User extends Component<IUser> {
+export class GetUser extends Component<IUser> {
     render(): ReactElement<IUser> {
         return <div>
             <div className="uk-card uk-card-primary uk-card-body">

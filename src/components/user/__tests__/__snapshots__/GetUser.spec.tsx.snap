@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<User /> component renders <User /> component 1`] = `
+exports[`<GetUser /> component renders <GetUser /> component 1`] = `
 <div>
   <div
     className="uk-card uk-card-primary uk-card-body"

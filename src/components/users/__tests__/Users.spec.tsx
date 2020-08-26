@@ -1,5 +1,5 @@
 import {shallow} from "enzyme";
-import {User} from "../../user/User";
+import {GetUser} from "../../user/GetUser";
 import React from "react";
 import {Users} from "../Users";
 import renderer from 'react-test-renderer';
@@ -7,15 +7,15 @@ import renderer from 'react-test-renderer';
 describe('<Users />', () => {
     function Users() {
         return <div>
-            <User name="Don" surname="Morretti"/>
-            <User name="Sarah" surname="Vaughn"/>
-            <User name="Steve" surname="Smith"/>
+            <GetUser name="Don" surname="Morretti"/>
+            <GetUser name="Sarah" surname="Vaughn"/>
+            <GetUser name="Steve" surname="Smith"/>
         </div>
     }
 
-    it('renders <User /> component', () => {
+    it('renders <GetUser /> component', () => {
         let wrapper = shallow(<Users/>);
-        expect(wrapper.find(User)).toHaveLength(3);
+        expect(wrapper.find(GetUser)).toHaveLength(3);
     });
 
     it('renders fetched Users', () => {
