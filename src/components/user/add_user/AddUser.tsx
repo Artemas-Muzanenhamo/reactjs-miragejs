@@ -6,6 +6,14 @@ interface User {
 }
 
 export class AddUser extends Component {
+
+    state = {
+        user: {
+            name: '',
+            surname: ''
+        }
+    };
+
     private formTitle = "Add A User";
     private buttonValue = "Add User";
 

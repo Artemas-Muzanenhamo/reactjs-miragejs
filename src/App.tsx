@@ -12,7 +12,7 @@ export default class App extends Component {
             <div className="App">
                 <Navbar title={this.navbarTitle} />
                 <hr className="uk-divider-icon"/>
-                <AddUser />
+                <AddUser/>
                 <hr className="uk-divider-icon"/>
                 <Users />
             </div>
