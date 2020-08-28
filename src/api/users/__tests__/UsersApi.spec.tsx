@@ -27,6 +27,13 @@ describe('UsersApi', () => {
         });
     }
 
+    function mockAddUserSuccessFetchPromise() {
+        return Promise.resolve({
+            json: () => Promise.resolve({}),
+            status: 201
+        });
+    }
+
     function mockFailedFetchPromise(users = testUsersJson()) {
         return Promise.resolve({
             json: () => Promise.resolve(users),
@@ -59,6 +66,30 @@ describe('UsersApi', () => {
                     expect(fetch).toHaveBeenCalledWith('/api/users');
                     expect(error).toEqual('Failed to retrieve users: Error: Not Authorised Dawg!');
 
+                    finaliseTest(done);
+                }
+            );
+    });
+
+    it('adds a User and returns a status 201 CREATED', (done) => {
+        jest.spyOn(global, 'fetch').mockImplementation(() => mockAddUserSuccessFetchPromise() as Promise<Response>);
+
+        const user: IUserJson = {
+            name: 'Hello',
+            surname: 'World'
+        };
+
+        UsersApi.addUser(user)
+            .then(
+                response => {
+                    expect(fetch).toHaveBeenCalledWith('/api/users/user', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(user)
+                    });
+                    expect(response.status).toEqual(201);
                     finaliseTest(done);
                 }
             );

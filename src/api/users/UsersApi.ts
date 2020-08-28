@@ -18,4 +18,17 @@ export class UsersApi {
                 }
             );
     }
+
+    static addUser(user: IUserJson): Promise<Response> {
+        return fetch('/api/users/user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user)
+        })
+            .then((response) => UsersApi.checkStatus(response))
+            .catch(error => Promise.reject('There was an error saving the user: ' + error))
+
+    }
 }

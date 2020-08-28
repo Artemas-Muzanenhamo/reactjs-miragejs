@@ -23,6 +23,10 @@ export class MirageJsServer {
                     this.get('/users', () => {
                         return MirageJsServer.mockedUsers();
                     });
+
+                    this.post('/users/user', () => {
+                        return {};
+                    });
                 },
             });
         }

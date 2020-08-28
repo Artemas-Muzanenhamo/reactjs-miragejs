@@ -1,17 +1,19 @@
 import React, {Component} from "react";
 import {Field, Form, Formik} from "formik";
+import {MirageJsServer} from "../../../mirageJsServer";
+import {UsersApi} from "../../../api/users/UsersApi";
 
 
-interface User {
+interface UserForm {
     user: {
         name: string;
         surname: string;
     }
 }
 
-export class AddUser extends Component<any, User> {
+export class AddUser extends Component<any, UserForm> {
 
-    constructor(props: any, state: User) {
+    constructor(props: any, state: UserForm) {
         super(props, state);
         this.state = {
             user: {
@@ -19,6 +21,10 @@ export class AddUser extends Component<any, User> {
                 surname: ''
             }
         };
+    }
+
+    componentDidMount(): void {
+        MirageJsServer.mirageJsServer();
     }
 
     private formTitle = "Add A User";
@@ -29,13 +35,13 @@ export class AddUser extends Component<any, User> {
             <Formik
                 initialValues={{name: '', surname: ''}}
                 onSubmit={async values => {
-                    await new Promise(resolve => setTimeout(resolve, 500));
                     this.setState({
                         user: {
-                                name: values.name,
-                                surname: values.surname
-                            }
-                    })
+                            name: values.name,
+                            surname: values.surname
+                        }
+                    });
+                    UsersApi.addUser(values);
                 }}
             >
                 <Form>
