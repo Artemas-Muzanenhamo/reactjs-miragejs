@@ -1,4 +1,7 @@
 import {IUserJson} from "../../components/users/Users";
+import {MirageJsServer} from "../../mirageJsServer";
+
+MirageJsServer.mirageJsServer();
 
 export class UsersApi {
 
@@ -13,6 +16,7 @@ export class UsersApi {
         return fetch('/api/users')
             .then((response) => UsersApi.checkStatus(response))
             .then(response => response.json())
+            .then((response) => response.users)
             .catch(error => {
                     return Promise.reject('Failed to retrieve users: ' + error)
                 }

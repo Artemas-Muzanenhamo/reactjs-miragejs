@@ -7,17 +7,19 @@ describe('UsersApi', () => {
         done();
     }
 
-    function testUsersJson(): IUserJson[] {
-        return [
-            {
-                name: 'Dummy',
-                surname: 'Test'
-            },
-            {
-                name: 'Hello',
-                surname: 'World'
-            }
-        ];
+    function testUsersJson() {
+        return {
+            users: [
+                {
+                    name: 'Dummy',
+                    surname: 'Test'
+                },
+                {
+                    name: 'Hello',
+                    surname: 'World'
+                }
+            ]
+        };
     }
 
     function mockSuccessFetchPromise(users = testUsersJson()) {
@@ -50,7 +52,7 @@ describe('UsersApi', () => {
                 users => {
                     expect(fetch).toHaveBeenCalledWith('/api/users');
                     expect(users.length).toEqual(2);
-                    expect(users).toEqual(testUsersJson());
+                    expect(users).toEqual(testUsersJson().users);
 
                     finaliseTest(done);
                 }

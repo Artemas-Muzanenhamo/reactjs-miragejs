@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {Field, Form, Formik} from "formik";
-import {MirageJsServer} from "../../../mirageJsServer";
 import {UsersApi} from "../../../api/users/UsersApi";
 
 
@@ -21,10 +20,6 @@ export class AddUser extends Component<any, UserForm> {
                 surname: ''
             }
         };
-    }
-
-    componentDidMount(): void {
-        MirageJsServer.mirageJsServer();
     }
 
     private formTitle = "Add A User";

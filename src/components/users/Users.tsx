@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {GetUser} from "../user/get_user/GetUser";
-import {MirageJsServer} from "../../mirageJsServer";
 import {UsersApi} from "../../api/users/UsersApi";
 
 interface IUser {
@@ -34,13 +33,13 @@ export class Users extends Component {
         );
 
     componentDidMount(): void {
-        MirageJsServer.mirageJsServer();
         UsersApi.fetchUsers()
             .then(this.mapToUser)
             .then(users => this.setState({users}));
     }
 
     render(): React.ReactElement {
+        console.log(this.state.users);
         return <div className="uk-child-width-1-3@m uk-grid-small uk-grid-match uk-grid">
             {this.state.users
                 .map(user =>
