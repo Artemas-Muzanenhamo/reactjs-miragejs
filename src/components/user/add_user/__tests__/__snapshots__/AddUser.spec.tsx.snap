@@ -2,7 +2,11 @@
 
 exports[`<AddUser /> component should render <AddUser /> component 1`] = `
 <div>
-  <form>
+  <form
+    action="#"
+    onReset={[Function]}
+    onSubmit={[Function]}
+  >
     <fieldset
       className="uk-fieldset"
     >
@@ -16,8 +20,12 @@ exports[`<AddUser /> component should render <AddUser /> component 1`] = `
       >
         <input
           className="uk-input uk-form-width-large"
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
           placeholder="First Name"
           type="text"
+          value=""
         />
       </div>
       <div
@@ -25,14 +33,18 @@ exports[`<AddUser /> component should render <AddUser /> component 1`] = `
       >
         <input
           className="uk-input uk-form-width-large"
+          name="surname"
+          onBlur={[Function]}
+          onChange={[Function]}
           placeholder="Surname"
           type="text"
+          value=""
         />
       </div>
       <div>
         <input
           className="uk-button uk-button-default"
-          type="button"
+          type="submit"
           value="Add User"
         />
       </div>

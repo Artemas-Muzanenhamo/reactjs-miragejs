@@ -43,6 +43,7 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-15": "latest",
     "enzyme-adapter-react-16": "latest",
+    "formik": "^2.1.5",
     "miragejs": "^0.1.40",
     "react-test-renderer": "^16.13.1"
   }
