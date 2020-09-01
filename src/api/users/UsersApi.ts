@@ -1,7 +1,4 @@
 import {IUserJson} from "../../components/users/Users";
-import {MirageJsServer} from "../../mirageJsServer";
-
-MirageJsServer.mirageJsServer();
 
 export class UsersApi {
 

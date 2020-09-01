@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {MirageJsServer} from "./mirageJsServer";
+
+if (process.env.NODE_ENV === "development") {
+    MirageJsServer.mirageJsServer();
+}
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,3 +20,4 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
