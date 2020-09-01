@@ -1,6 +1,9 @@
 import {IUserJson} from "../../../components/users/Users";
 import {UsersApi} from "../UsersApi";
 
+const ADD_USER_URL = '/api/users/user';
+const GET_USERS_URL = '/api/users';
+
 describe('UsersApi', () => {
     function finaliseTest(done: jest.DoneCallback) {
         jest.resetAllMocks();
@@ -36,6 +39,14 @@ describe('UsersApi', () => {
         });
     }
 
+    function mockAddUserFailureFetchPromise() {
+        return Promise.resolve({
+            json: () => Promise.resolve({}),
+            status: 400,
+            statusText: 'Bad request while adding users'
+        });
+    }
+
     function mockFailedFetchPromise(users = testUsersJson()) {
         return Promise.resolve({
             json: () => Promise.resolve(users),
@@ -50,7 +61,7 @@ describe('UsersApi', () => {
         UsersApi.fetchUsers()
             .then(
                 users => {
-                    expect(fetch).toHaveBeenCalledWith('/api/users');
+                    expect(fetch).toHaveBeenCalledWith(GET_USERS_URL);
                     expect(users.length).toEqual(2);
                     expect(users).toEqual(testUsersJson().users);
 
@@ -65,7 +76,7 @@ describe('UsersApi', () => {
         UsersApi.fetchUsers()
             .catch(
                 (error) => {
-                    expect(fetch).toHaveBeenCalledWith('/api/users');
+                    expect(fetch).toHaveBeenCalledWith(GET_USERS_URL);
                     expect(error).toEqual('Failed to retrieve users: Error: Not Authorised Dawg!');
 
                     finaliseTest(done);
@@ -84,7 +95,7 @@ describe('UsersApi', () => {
         UsersApi.addUser(user)
             .then(
                 response => {
-                    expect(fetch).toHaveBeenCalledWith('/api/users/user', {
+                    expect(fetch).toHaveBeenCalledWith(ADD_USER_URL, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -92,6 +103,31 @@ describe('UsersApi', () => {
                         body: JSON.stringify(user)
                     });
                     expect(response.status).toEqual(201);
+                    finaliseTest(done);
+                }
+            );
+    });
+
+    it('throws an error with an error message when adding a User fails', (done) => {
+        jest.spyOn(global, 'fetch').mockImplementation(() => mockAddUserFailureFetchPromise() as Promise<Response>);
+
+        const user: IUserJson = {
+            name: 'Hello',
+            surname: 'World'
+        };
+
+        UsersApi.addUser(user)
+            .catch(
+                (error) => {
+                    expect(fetch).toHaveBeenCalledWith(ADD_USER_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(user)
+                    });
+                    expect(error).toEqual('There was an error saving the user: Error: Bad request while adding users');
+
                     finaliseTest(done);
                 }
             );
