@@ -44,7 +44,8 @@ export class Users extends Component {
             {this.state.users
                 .map(user =>
                     <GetUser key={user.name} name={user.name} surname={user.surname}/>
-                )}
+                )
+            }
         </div>
     }
 }
