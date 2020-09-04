@@ -1,5 +1,4 @@
 import {Request, Server, Model} from "miragejs";
-import {IUserJson} from "./components/users/Users";
 import {Registry} from "miragejs/-types";
 
 const UserModel = Model.extend({
@@ -7,19 +6,6 @@ const UserModel = Model.extend({
 });
 
 export class MirageJsServer {
-    private static mockedUsers = (): IUserJson[] => [
-        {
-            name: 'Artemas',
-            surname: 'Muza'
-        }, {
-            name: 'LeBron',
-            surname: 'James'
-        }, {
-            name: 'Lara',
-            surname: 'Croft'
-        }
-    ];
-
     public static mirageJsServer(): Server<Registry<{user: typeof UserModel}, {}>> {
         return new Server({
             models: {
