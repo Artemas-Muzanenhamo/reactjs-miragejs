@@ -10,7 +10,6 @@ export class UsersApi {
         throw new Error(response.statusText);
     };
 
-
     static fetchUsers(): Promise<IUserJson[]> {
         return fetch(this._users_url)
             .then((response) => UsersApi.checkStatus(response))
