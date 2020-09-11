@@ -2,7 +2,7 @@ import {Request, Server, Model} from "miragejs";
 import {Registry} from "miragejs/-types";
 
 const UserModel = Model.extend({
-    name: 'hello',
+    name: '',
 });
 
 export class MirageJsServer {
