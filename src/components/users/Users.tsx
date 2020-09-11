@@ -39,7 +39,6 @@ export class Users extends Component {
     }
 
     render(): React.ReactElement {
-        console.log(this.state.users);
         return <div className="uk-child-width-1-3@m uk-grid-small uk-grid-match uk-grid">
             {this.state.users
                 .map(user =>

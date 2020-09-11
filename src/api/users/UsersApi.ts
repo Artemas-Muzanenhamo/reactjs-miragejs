@@ -1,6 +1,7 @@
 import {IUserJson} from "../../components/users/Users";
 
 export class UsersApi {
+    private static readonly _users_url = '/api/users';
 
     private static checkStatus(response: Response): Promise<Response> {
         if (response.status >= 200 && response.status < 300) {
@@ -9,8 +10,9 @@ export class UsersApi {
         throw new Error(response.statusText);
     };
 
+
     static fetchUsers(): Promise<IUserJson[]> {
-        return fetch('/api/users')
+        return fetch(this._users_url)
             .then((response) => UsersApi.checkStatus(response))
             .then(response => response.json())
             .then((response) => response.users)
@@ -21,7 +23,7 @@ export class UsersApi {
     }
 
     static addUser(user: IUserJson): Promise<Response> {
-        return fetch('/api/users/user', {
+        return fetch(this._users_url + '/user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
