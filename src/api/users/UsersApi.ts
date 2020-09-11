@@ -15,7 +15,7 @@ export class UsersApi {
         return fetch(this._users_url)
             .then((response) => UsersApi.checkStatus(response))
             .then(response => response.json())
-            .then((response) => response.users)
+            .then((json) => json.users)
             .catch(error => {
                     return Promise.reject('Failed to retrieve users: ' + error)
                 }
