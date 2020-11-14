@@ -36,7 +36,7 @@ export class AddUser extends Component<any, UserForm> {
                             surname: values.surname
                         }
                     });
-                    UsersApi.addUser(values);
+                    await UsersApi.addUser(values);
                 }}
             >
                 <Form>
